@@ -18,10 +18,12 @@ namespace UI
             //Starting menu
             do
             {
+                Console.WriteLine("---------------------------------------");
                 Console.WriteLine("Welcome to Resteraunt Reviewer!");
                 Console.WriteLine("0) Exit Login");
                 Console.WriteLine("1) New User");
                 Console.WriteLine("2) Current User");
+                Console.WriteLine("---------------------------------------");
 
                 switch(Console.ReadLine())
                 {
@@ -61,12 +63,13 @@ namespace UI
             {
                  do
                  {
+                    Console.WriteLine("---------------------------------------");                    
                     Console.WriteLine("Welcome to Resteraunt Reviewer!");
                     Console.WriteLine("0) Exit Resterant Reviewer");
                     Console.WriteLine("1) Display List of Restaurants");
                     Console.WriteLine("2) Search for a Restaurant");
                     Console.WriteLine("3) Search for a User");
-                    //Console.WriteLine("5) Search for a Resteraunt");
+                    Console.WriteLine("---------------------------------------");
 
                     switch(Console.ReadLine())
                     {
@@ -120,6 +123,39 @@ namespace UI
             }
         } 
         
+        ///<summery>
+        /// Review Options
+        /// </summery>
+        public void ReviewOptions(Reviews r)
+        {
+             do
+            {
+                Console.WriteLine("---------------------------------------");
+                Console.WriteLine("Welcome to Resteraunt Reviewer!");
+                Console.WriteLine("0) Exit Login");
+                Console.WriteLine("1) Display Reviews");
+                Console.WriteLine("2) New Review");
+                Console.WriteLine("---------------------------------------");
+
+                switch(Console.ReadLine())
+                {
+                    case "0":
+                        Console.WriteLine("Exiting ...");
+                        repeat = false;
+                    break;
+                    case "1":
+                        ViewAllReviews(r);
+                    break;
+                    case "2":
+                        MakeReview();
+                    break;
+                    default:
+                        Console.WriteLine("Invalid input, try again.");
+                    break;
+                }
+            } while(repeat);
+        }
+
         ///<summery>
         /// Create User
         /// </summery>
@@ -322,29 +358,7 @@ namespace UI
                 }
             }
         }
+                
         
-        //Check if the user exists
-        public User CheckUser(string username, string password)
-        {
-            List<User> u = new List<User>();
-            for(int i=0; i< u.Count; i++)
-            {
-                if(username == u[i].uname && password == u[i].pass)
-                {
-                    
-                    return u[i];
-                }
-            }
-            return null;
-
-        }
-        
-        ///<summery>
-        /// Review Options
-        /// </summery>
-        public void ReviewOptions()
-        {
-            
-        }
     }
 }
