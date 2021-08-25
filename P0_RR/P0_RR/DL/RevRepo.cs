@@ -14,10 +14,24 @@ namespace DL
             _context = context;
         }
 
-        public List<Models.User> GetAllCats()
+        public List<Models.Restaurant> GetAllRestaurants()
         {
-            return _context.Cats.Select(
-                cat => new Models.Cat(cat.Id, cat.Name, cat.ribcage, cat.leglength)
+            return _context.Restaurant.Select(
+                restaurant => new Models.Restaurant(restaurant.ID, restaurant.Name, restaurant.Rating, restaurant.location, restaurant.ZipCode)
+            ).ToList();
+        }
+
+        public List<Models.User> GetAllUsers()
+        {
+            return _context.User.Select(
+                user => new Models.User(user.ID, user.Username, User.Password, User.Admin)
+            ).ToList();
+        }
+
+        public List<Models.Reviews> GetAllReviews()
+        {
+            return _context.Reviews.Select(
+                reviews => new Models.Restaurant(reviews.ID, reviews.Users, reviews.Restaurant, reviews.Rating, reviews.Comments)
             ).ToList();
         }
 
