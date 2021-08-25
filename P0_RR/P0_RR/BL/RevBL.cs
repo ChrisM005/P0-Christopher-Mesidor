@@ -28,7 +28,7 @@ namespace BL
             return _repo.SearchRestaurantByName(name);
         }
         
-        /*public List<User> ViewAllUser()
+        public List<User> ViewAllUser()
         {
             return _repo.GetAllUser();
         }
@@ -51,7 +51,7 @@ namespace BL
         public Reviews AddReview(Reviews review)
         {
             return _repo.AddReview(review);
-        }*/
+        }
 
         
     }

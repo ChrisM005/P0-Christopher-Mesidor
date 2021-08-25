@@ -7,7 +7,9 @@ namespace UI
     public class MainMenu : IMenu
     {
         
-        //
+        /// <summary>
+        /// Start the menu with the login switch
+        /// </summary>
         public void Start()
         {
             List<Restaurant> res = new List<Restaurant>();
@@ -336,7 +338,19 @@ namespace UI
                 if(input == r[i].Name)
                 {
                     Console.WriteLine("Found Restaurant!");
-                    Console.WriteLine("Do you want to Review this Restaurant? (y/n)");
+                    Console.WriteLine($"Name: {r[i].Name}");
+                    Console.WriteLine($"Rating: {r[i].Rating}");
+                    Console.WriteLine($"Location: {r[i].Location}, {r[i].ZipCode}");
+                }
+            }
+        }
+                
+        
+    }
+}
+
+
+/*Console.WriteLine("Do you want to Review this Restaurant? (y/n)");
                     yn = Console.ReadLine();
                     if(yn != "y" || yn != "n")
                     {
@@ -348,17 +362,10 @@ namespace UI
                     }
                     if(yn == "y")
                     {
-                        
+                        ReviewOptions();
                     }
                     else
                     {
                         break;
                     }
-
-                }
-            }
-        }
-                
-        
-    }
-}
+*/

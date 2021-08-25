@@ -14,14 +14,14 @@ namespace DL
             _context = context;
         }
 
-       /* public List<Models.User> GetAllCats()
+        public List<Models.User> GetAllCats()
         {
             return _context.Cats.Select(
                 cat => new Models.Cat(cat.Id, cat.Name, cat.ribcage, cat.leglength)
             ).ToList();
         }
 
-        public Models.Cat AddACat(Models.Cat cat)
+       /* public Models.Cat AddACat(Models.Cat cat)
         {
             _context.Cats.Add(
                 new Entities.Cat{
