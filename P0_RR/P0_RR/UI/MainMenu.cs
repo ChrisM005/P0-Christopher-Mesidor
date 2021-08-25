@@ -17,13 +17,9 @@ namespace UI
             do
             {
                 Console.WriteLine("Welcome to Resteraunt Reviewer!");
-                Console.WriteLine("0) Exit Resterant Reviewer");
+                Console.WriteLine("0) Exit Login");
                 Console.WriteLine("1) New User");
                 Console.WriteLine("2) Current User");
-                Console.WriteLine("3) Display List of Restaurants");
-                Console.WriteLine("4) Search for a Restaurant");
-               // Console.WriteLine("4) Search for a Resteraunt");
-                //Console.WriteLine("5) Search for a Resteraunt");
 
                 switch(Console.ReadLine())
                 {
@@ -37,20 +33,90 @@ namespace UI
                     case "2":
                         ULogin();
                     break;
-                    case "3":
-                        DispResteraunt(res);                        
-                    break;
-                    case "4":
-                        SearchResteraunt();
-                    break;
                     default:
                         Console.WriteLine("Invalid input, try again.");
                     break;
                 }
             } while(repeat);
         }
+        
+        /// 
+        ///Switches Man
+        ///  
+        public void ChooseRestaurant(User x)
+        {
+            bool repeat=true;
+            bool adminprivlige = false;
+            if(x.Admin == True)
+            {
+                adminprivlige = true;
+            }
+            if(adminprivlige==true)
+            {
+                 do
+                 {
+                    Console.WriteLine("Welcome to Resteraunt Reviewer!");
+                    Console.WriteLine("0) Exit Resterant Reviewer");
+                    Console.WriteLine("1) Display List of Restaurants");
+                    Console.WriteLine("2) Search for a Restaurant");
+                    Console.WriteLine("3) Search for a User");
+                    //Console.WriteLine("5) Search for a Resteraunt");
 
-        //Create User
+                    switch(Console.ReadLine())
+                    {
+                       case "0":
+                            Console.WriteLine("Exiting ...");
+                            repeat = false;
+                        break;
+                        case "1":
+                            ViewAllResteraunt(res);                        
+                        break;
+                        case "2":
+                            SearchResteraunt();
+                        break;
+                        case "3":
+                            SearchUser();
+                        break;
+                        default:
+                            Console.WriteLine("Invalid input, try again.");
+                        break;
+                    }
+                 } while(repeat);
+            }
+            else
+            {
+                do
+                {
+                    Console.WriteLine("Welcome to Resteraunt Reviewer!");
+                    Console.WriteLine("0) Exit Resterant Reviewer");
+                    Console.WriteLine("1) Display List of Restaurants");
+                    Console.WriteLine("2) Search for a Restaurant");
+                   // Console.WriteLine("4) Search for a Resteraunt");
+                    //Console.WriteLine("5) Search for a Resteraunt");
+
+                    switch(Console.ReadLine())
+                    {
+                       case "0":
+                            Console.WriteLine("Exiting ...");
+                            repeat = false;
+                        break;
+                        case "1":
+                            ViewAllResteraunt(res);                        
+                        break;
+                        case "2":
+                            SearchResteraunt();
+                        break;
+                        default:
+                            Console.WriteLine("Invalid input, try again.");
+                        break;
+                    }
+             } while(repeat);
+            }
+        } 
+        
+        ///<summery>
+        /// Create User
+        /// </summery>
         public void CreateUser()
         {
             string username;
@@ -71,7 +137,59 @@ namespace UI
             Console.WriteLine($"{userdata.uname} was successfully added!");
         }
 
-        //User Login
+        ///<summery>
+        /// Create Review
+        /// </summery>
+        public void MakeReview()
+        {
+            int input=0;
+            string comment = "";
+            Reviews ReviewToAdd;
+
+            Console.WriteLine("Enter Review to add out of 5: ");
+            
+            do
+            {
+                Console.WriteLine("Rate: ");
+                input = Console.Read();
+
+            } while((input >0 && input <=5));
+
+            Console.WriteLine("Comment: ");
+            comment = Console.ReadLine();
+
+            ReviewToAdd = new Reviews(input,comment);
+            ReviewToAdd = _revbl.MakeReview(ReviewToAdd);
+
+            Console.WriteLine("Review was successfully added!");
+        }
+
+        ///<summery>
+        /// Create Restaurant
+        /// </summery>
+        public void AddRestaurant()
+        {
+            string name;
+            Restaurant ResToAdd;            
+            do
+            {
+                Console.WriteLine("Restaurant name: ");
+                name = Console.ReadLine();
+
+            } while(int.IsNullOrWhiteSpace(name));
+
+            Console.WriteLine("Comment: ");
+            comment = Console.ReadLine();
+
+            ResToAdd = new Restaurant(input,comment);
+            ResToAdd = _revbl.AddRestaurant(ResToAdd);
+
+            Console.WriteLine("Retsaurant was successfully added!");
+        }
+
+        ///<summery>
+        /// User Login
+        /// </summery>
         public void ULogin()
         {
             string un;
@@ -84,8 +202,10 @@ namespace UI
             Console.WriteLine("Password: ");
         }
 
-        //Display Restaurant
-        public void DispResteraunt(List<Restaurant> r)
+        ///<sumery>
+        /// Display Restaurant
+        /// </summery>
+        public void ViewAllResteraunt(List<Restaurant> r)
         {
             r = new List<Restaurant>();
             Console.WriteLine("--------------------------------");
@@ -100,7 +220,7 @@ namespace UI
         }
 
         //Display Users
-        public void DispUsers(List<User> r)
+        public void ViewAllpUsers(List<User> r)
         {
             r = new List<User>();
             Console.WriteLine("--------------------------------");
@@ -114,7 +234,7 @@ namespace UI
         }
 
         //Display Reviews
-        public void DispReviews(List<Reviews> r)
+        public void ViewAllReviews(List<Reviews> r)
         {
             r = new List<Reviews>();
             Console.WriteLine("--------------------------------");
@@ -122,7 +242,7 @@ namespace UI
             {
                 //Console.WriteLine($"User ID: {r[i].ID}");
                 Console.WriteLine($"Username: {r[i].rating}");
-                Console.WriteLine($"Password: {r[i].comment}");
+                Console.WriteLine($"Password: {r[i].comments}");
                 Console.WriteLine("--------------------------------");
             }
         }
@@ -186,30 +306,6 @@ namespace UI
             }
             return null;
 
-        }
-        
-        public void MakeReview()
-        {
-            InvalidCastException input=0;
-            string comment = "";
-            Reviews ReviewToAdd;
-
-            Console.WriteLine("Enter Review to add out of 5: ");
-            
-            do
-            {
-                Console.WriteLine("Rate: ");
-                input = Console.ReadLine();
-
-            } while(int.IsNullOrWhiteSpace(input) && (input >0 && input <=5));
-
-            Console.WriteLine("Comment: ");
-            comment = Console.ReadLine();
-
-            RevToAdd = new Reviews(input,comment);
-            RevToAdd = _revbl.MakeReview(RevToAdd);
-
-            Console.WriteLine("Review was successfully added!");
         }
         
     }

@@ -5,7 +5,7 @@ namespace DL
 {
     public interface IRevRepo
     {
-        /*List<Cat> GetAllCats();
+        /*List<User> GetAllCats();
         Cat AddACat(Cat cat);
         Meal AddAMeal(Meal meal);
         Cat SearchCatByName(string name);*/

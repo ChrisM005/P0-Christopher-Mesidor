@@ -10,7 +10,10 @@ namespace Models
         {
             this.ID = id;
         }
-
+        public Restaurant(string name)
+        {
+            this.Name = name;
+        }
         public int ID {get; set;}
         public string Name {get; set;}
         public decimal Rating {get; set;}

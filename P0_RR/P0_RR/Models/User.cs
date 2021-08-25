@@ -11,6 +11,11 @@ namespace Models
         {
             this.ID = id;
         }
+        public User(string username, string password)
+        {
+            this.uname = username;
+            this.pass = password;
+        }
         public int ID {get; set;}
         public string uname {get;set;}
         public string pass {get;set;}

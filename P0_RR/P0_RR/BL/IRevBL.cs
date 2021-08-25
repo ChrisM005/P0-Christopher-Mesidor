@@ -5,8 +5,11 @@ namespace BL
 {
     public class IRevBL
     {
-        List<User> DispUsers(List<User> r);
-        List<Restaurant> DispResteraunt(List<Restaurant> r);
-        List<Reviews> DispReviews(List<Reviews> r);
+       /*List<Restaurant> ViewAllResteraunt();
+       List<User> ViewAllUser();
+       List<Reviews> ViewAllReviews();
+       Restaurant AddRestaurant(Restaurant restaurant);
+       User AddUser(User usersID);
+       Reviews AddReview(Reviews review);*/
     }
 }
