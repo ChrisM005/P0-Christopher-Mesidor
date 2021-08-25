@@ -11,8 +11,10 @@ namespace UI
         public void Start()
         {
             List<Restaurant> res = new List<Restaurant>();
+            List<User> person = new List<User>();
             //string rname;
             bool repeat = true;
+            bool succeess;
             //Starting menu
             do
             {
@@ -31,7 +33,11 @@ namespace UI
                         CreateUser();
                     break;
                     case "2":
-                        ULogin();
+                        succeess = ULogin(person);
+                        if(succeess == true)
+                        {
+                            ChooseRestaurant(person);
+                        }
                     break;
                     default:
                         Console.WriteLine("Invalid input, try again.");
@@ -41,7 +47,7 @@ namespace UI
         }
         
         /// 
-        ///Switches Man
+        ///Select search for restaurant or to display them
         ///  
         public void ChooseRestaurant(User x)
         {
@@ -190,16 +196,46 @@ namespace UI
         ///<summery>
         /// User Login
         /// </summery>
-        public void ULogin()
+        public bool ULogin(List<User> us)
         {
+            //User us = new User();
             string un;
             string pw;
             bool uvalid = false;
             bool pvalid = false;
+            bool valid =false;
 
-            Console.WriteLine("Username: ");
+            do
+            {
+                Console.WriteLine("Username: ");
+                un = Console.ReadLine();
+                foreach(UriParser x in us)
+                {
+                    if(un == us[x].uname);
+                    {
+                        uvalid = true;
+                    }
+                }
+            }while(String.IsNullOrWhiteSpace(un));
+                
+           do
+            {
+                Console.WriteLine("Password: ");
+                pw = Console.ReadLine();
+                foreach(UriParser x in us)
+                {
+                    if(pw == us[x].pass);
+                    {
+                        pvalid = true;
+                    }
+                }
+            }while(String.IsNullOrWhiteSpace(pw));
 
-            Console.WriteLine("Password: ");
+            if(uvalid == true && pvalid == true)
+            {
+                valid = true;
+            }
+            return valid;
         }
 
         ///<sumery>
@@ -220,7 +256,7 @@ namespace UI
         }
 
         //Display Users
-        public void ViewAllpUsers(List<User> r)
+        public void ViewAllUsers(List<User> r)
         {
             r = new List<User>();
             Console.WriteLine("--------------------------------");
@@ -276,12 +312,7 @@ namespace UI
                     }
                     if(yn == "y")
                     {
-                        Console.WriteLine("Enter your username: ");
-                        usr = Console.ReadLine();
-                        Console.WriteLine("Enter your password: ");
-                        pw = Console.ReadLine();
                         
-                        CheckUser(usr,pw);
                     }
                     else
                     {
@@ -308,5 +339,12 @@ namespace UI
 
         }
         
+        ///<summery>
+        /// Review Options
+        /// </summery>
+        public void ReviewOptions()
+        {
+            
+        }
     }
 }

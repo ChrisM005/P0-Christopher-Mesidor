@@ -6,7 +6,7 @@ namespace BL
 {
     public class RevBL : IRevBL
     {
-       /* private IRevBL _repo;
+        private IRevBL _repo;
 
         public RevBL(IRevRepo repo)
         {
@@ -28,7 +28,7 @@ namespace BL
             return _repo.SearchRestaurantByName(name);
         }
         
-        public List<User> ViewAllUser()
+        /*public List<User> ViewAllUser()
         {
             return _repo.GetAllUser();
         }
