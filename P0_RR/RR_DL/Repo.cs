@@ -11,7 +11,7 @@ namespace RR_DL
         private readonly CMDBP0Context _context;
         public Repo(CMDBP0Context context)
         {
-            _context = conteext;
+            _context = context;
         }
 
         public Reviews AddReviews(Reviews reviews)
