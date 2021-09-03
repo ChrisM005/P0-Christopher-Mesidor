@@ -13,7 +13,7 @@ namespace RR_DL
         private readonly CMDBP0Context _context;
         public Repo(CMDBP0Context context)
         {
-            _context = context;
+            _context = conteext;
         }
 
         public Reviews AddReviews(Reviews reviews)
@@ -43,7 +43,7 @@ namespace RR_DL
             );
             _context.SaveChanges();
 
-            return users;
+            
         }
 
         public List<Restaurants> GetRestaurants()
@@ -62,7 +62,7 @@ namespace RR_DL
 
         public List<Users> GetUsers()
         {
-            return _context.Users.Select(
+            return context.Users.Select(
                 users => new RR_BL.Users(users.Id, users.Username, users.Password, users.Admin)
             ).ToList();
         }

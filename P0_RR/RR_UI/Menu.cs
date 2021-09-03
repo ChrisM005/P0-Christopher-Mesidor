@@ -23,7 +23,7 @@ namespace RR_UI
         public void RevMenu(CMDBP0Context context)
         {
             bool repeat = true;
-            Console.WriteLine("Welcome to Chris's Royal Restaurant Reviewer");
+            Console.WriteLine("Welcome to C-Soned Restaurant Reviewer");
             do
             {
                 Console.WriteLine("-------------------------------");
@@ -143,7 +143,7 @@ namespace RR_UI
             User uinput = new User(); // Instatiated input for a temporary holder for the new user
             //bool validu = false;
             Console.WriteLine("Enter your new Username: ");
-            uinput.Username = Console.RedLine();
+            uinput.Username = Console.ReadLine();
             //Check if username is taken
             /*for(int i=0; i< users.Count-2; i++)
             {
@@ -165,7 +165,6 @@ namespace RR_UI
             context.Add(uinput);
             context.SaveChanges();
             Console.WriteLine("User Succeessfully added");
-            return context;
         }
         
         public bool Login()
@@ -329,7 +328,7 @@ namespace RR_UI
             {
                 Console.WriteLine("Retsaurant does not exist ...");
             }
-            
+            return valid;
         }
     }
 }
