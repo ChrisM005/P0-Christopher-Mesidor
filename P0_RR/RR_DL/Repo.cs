@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RR_BL;
@@ -62,7 +60,7 @@ namespace RR_DL
 
         public List<Users> GetUsers()
         {
-            return context.Users.Select(
+            return _context.Users.Select(
                 users => new RR_BL.Users(users.Id, users.Username, users.Password, users.Admin)
             ).ToList();
         }
