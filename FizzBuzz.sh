@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-num=1
+num=1FizzBuzz.sh
 while [ $num -le 20 ]
 do
 i=$((num % 3))
